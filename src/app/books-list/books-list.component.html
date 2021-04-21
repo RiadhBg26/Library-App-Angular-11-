@@ -1,0 +1,49 @@
+<div class="card">
+    <div class="card-header">
+        {{title}}
+    </div>
+    <div class="row">
+        <div class="col-2">
+            <button class="btn btn-primary" (click)="display()">
+                {{displayTab ? 'Hide': 'Dipslay Table'}}
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <select name="" id="" class="btn btn-success" [(ngModel)]="categId" (change)="changeCateg()">
+                <option value="all" >Categories</option>
+                <option [value]="category" *ngFor="let category of categories">
+                    {{category}}
+                </option>
+            </select>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive" *ngIf="displayTab">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Title</th>
+                        <th>Desctiption</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let book of books" [ngClass]="{'text-success': book.title == 'Book2'}">
+                        <td > <img [src]="book.image" alt="book" [height]="imgHeight" [width]="imgWidth"> </td>
+                        <td > {{book.title}} </td>
+                        <td> {{book.description}} </td>
+                        <td> {{book.category}} </td>
+                        <td> {{book.price}} </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer">
+
+    </div>
+</div>
